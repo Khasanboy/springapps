@@ -6,37 +6,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Author {
+public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books = new HashSet<Book>();
+    private String name;
+    private String address;
 
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Publisher(String name, String address) {
+        this.name = name;
+        this.address = address;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Author)) return false;
-        Author author = (Author) o;
-        return id.equals(author.id);
+        if (o == null || getClass() != o.getClass()) return false;
+        Publisher publisher = (Publisher) o;
+        return Objects.equals(id, publisher.id);
     }
 
     @Override
@@ -46,11 +42,10 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
+        return "Publisher{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", books=" + books +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
