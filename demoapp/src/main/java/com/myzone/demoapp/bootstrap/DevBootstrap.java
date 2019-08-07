@@ -44,7 +44,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         bookRepository.save(ddd);
 
 
-
         Author rod = new Author("Rod", "Jhonson");
         Book noEJB = new Book("JEE Development without EJB", "2344343");
         Publisher publisher1 = new Publisher("Work", "London");
